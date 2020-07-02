@@ -10,7 +10,7 @@ export class Dashboard extends React.Component {
   };
   
 handleDrop = async (event) => {
-    console.log(event[0])
+    console.log(event.target)
     this.setState({
       selectedFile: event[0],
       loaded: 0,
@@ -44,10 +44,15 @@ handleDrop = async (event) => {
          
         </div>
       </DragAndDrop>
+      <FormGroup controlId="password" bsSize="large">
         <input type="file" name="file" onChange={this.onChangeHandler}/>
-        <Button onClick={this.disconnect} block bsSize="large" type="submit">
+        <Button onClick={this.handleDrop} block bsSize="large" type="submit">
+         ok
+        </Button> 
+        </FormGroup>
+        {/* <Button onClick={this.disconnect} block bsSize="large" type="submit">
           Se déconnecter
-        </Button>
+        </Button> */}
       </div>
     );
   }

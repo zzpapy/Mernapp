@@ -1,4 +1,5 @@
 const User = require("../../schema/schemaUser.js");
+const fileUpload = require('express-fileupload');
 const passwordHash = require("password-hash");
 
 async function signup(req, res) {
@@ -44,7 +45,7 @@ async function signup(req, res) {
 }
 
 async function upload(req, res) { 
-  const { photo} = req.body;
+  const { photo} = req.files;
 //  console.log(req)
   // try {    
   //   const findUser = await User.find({});

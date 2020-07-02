@@ -8,7 +8,10 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "create-react-app": "^1.5.2",
+    "crypto": "^1.0.1",
     "express": "^4.16.2",
+    "express-fileupload": "^1.1.7-alpha.3",
+    "formidable": "^1.2.2",
     "jwt-simple": "^0.5.1",
     "mongodb": "^3.5.9",
     "mongoose": "^5.0.7",

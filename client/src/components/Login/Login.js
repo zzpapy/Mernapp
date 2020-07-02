@@ -22,6 +22,7 @@ export class Login extends React.Component {
     try {
       const { data } = await API.login(email, password);
       // const { data1 } = await API.findAll();
+      console.log(JSON.parse(data.user))
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", data.user);
       // localStorage.setItem("users", data1);
@@ -31,17 +32,17 @@ export class Login extends React.Component {
     }
   };
   
-  findAll = async () => {
-    try {
-      const { data } = await API.findAll();
-      console.log(data)
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("user", data.user);
-      window.location = "/dashboard";
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  // findAll = async () => {
+  //   try {
+  //     const { data } = await API.findAll();
+  //     console.log(data)
+  //     localStorage.setItem("token", data.token);
+  //     localStorage.setItem("user", data.user);
+  //     window.location = "/dashboard";
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   handleChange = (event) => {
     this.setState({

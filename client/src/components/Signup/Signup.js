@@ -5,16 +5,18 @@ import API from "../../utils/API";
 export class Signup extends React.Component {
   state = {
     email: "",
+    nom:"",
     password: "",
     cpassword: ""
   };
   send = async () => {
-    const { email, password, cpassword } = this.state;
+    const { email, password, cpassword,nom } = this.state;
     if (!email || email.length === 0) return;
     if (!password || password.length === 0 || password !== cpassword) return;
     try {
-      const { data } = await API.signup({ email,  password });
+      const { data } = await API.signup({ email,  password, nom });
       localStorage.setItem("token", data.token);
+      localStorage.setItem("user", data.user);
       window.location = "/dashboard";
     } catch (error) {
       console.error(error);
@@ -26,7 +28,7 @@ export class Signup extends React.Component {
     });
   };
   render() {
-    const { email, password, cpassword } = this.state;
+    const { email, nom, password, cpassword } = this.state;
     return (
       <div className="Login">
         <FormGroup controlId="email" bsSize="large">
@@ -35,6 +37,14 @@ export class Signup extends React.Component {
             autoFocus
             type="email"
             value={email}
+            onChange={this.handleChange}
+          />
+        </FormGroup> 
+        <FormGroup controlId="nom" bsSize="large">
+          <ControlLabel>nom</ControlLabel>
+          <FormControl
+            type="text"
+            value={nom}
             onChange={this.handleChange}
           />
         </FormGroup>        

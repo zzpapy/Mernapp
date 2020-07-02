@@ -15,6 +15,14 @@ const userSchema = mongoose.Schema(
     password: {
       type: String,
       required: true
+    },
+    nom: {
+      type: String,
+      required: true
+    },
+    photo: {
+      type: String,
+      required: true
     }
   },
   { timestamps: { createdAt: "created_at" } }
@@ -28,7 +36,7 @@ userSchema.methods = {
     return jwt.encode(this, config.secret);
   },
   affich : function(){
-      return this.email;
+      return JSON.stringify(this);
   }
 };
 

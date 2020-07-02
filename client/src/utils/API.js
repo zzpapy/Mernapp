@@ -5,7 +5,7 @@ const headers = {
 const burl = "http://localhost:8000";
 
 export default {
-  login: function(email, password) {
+  login: function(email, password, nom) {
     return axios.post(
       `${burl}/user/login`,
       {
@@ -17,17 +17,19 @@ export default {
       }
     );
   },
-  // findAll: function() {
-  //   return axios.post(
-  //     `${burl}/user/findAll`,
-  //     {
-       
-  //     },
-  //     {
-  //       headers: headers
-  //     }
-  //   );
-  // },
+  upload: function(photo) {
+    console.log(photo)
+    return axios.post(
+      `${burl}/user/upload`,
+      {
+        photo : photo,
+        user : JSON.parse(localStorage.user)._id
+      },
+      {
+        headers: headers
+      }
+    );
+  },
   signup: function(send) {
     return axios.post(`${burl}/user/signup`, send, { headers: headers });
   },
